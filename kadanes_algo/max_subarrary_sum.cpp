@@ -20,6 +20,21 @@ void maxsum(int a[],int size)
 
 }
 
+
+int kadanes(int a[],int size)
+{
+    int cursum=0,maxsum=INT_MIN;
+    for(int i=0;i<size;i++)
+    {
+        cursum+=a[i];
+        maxsum=max(cursum,maxsum);
+        if(cursum<0)
+        {
+            cursum=0;
+        }
+    }
+    return maxsum;
+}
 int main()
 {
 
@@ -39,6 +54,8 @@ int main()
         cout<<endl;
     }
     cout<<"new array="<<endl;
-    maxsum(a,5);
+    int b[5]={-2,-1,-3,-4,-5};
+    maxsum(b,5);
+    cout<<endl<<"maxsum by kadanes="<<kadanes(b,5)<<endl;
     return 0;
 }
