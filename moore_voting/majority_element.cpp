@@ -43,11 +43,37 @@ vector<int> majority(vector<int> a)
 
 }
 
+
+vector<int> majo_moore(vector<int> a)
+
+{
+    vector<int> res;
+    int freq=0,ans=0;
+    for(int i=0;i<a.size();i++)
+    {
+        if(freq==0)
+        {
+            ans=a[i];
+        }
+        if(ans==a[i])
+        {
+            freq++;
+        }
+        else{
+            freq--;
+        }
+    }
+    res.push_back(ans);
+   
+    return  res;
+}
+
 int main()
 {
-    vector<int> a={1,2,3,1,2,1,1,1,1,2,1,1};
+    vector<int> a={2,2,3,2,2,1,2,1,1,2,1,2};
     vector<int> res=majority(a);
-    cout<<"result measurity elements="<<res[0]<<endl;
+      vector<int> res1=majority(a);
+    cout<<"result measurity elements="<<res[0]<<"majority by moore="<<res1[0]<<endl;
 
 
 
