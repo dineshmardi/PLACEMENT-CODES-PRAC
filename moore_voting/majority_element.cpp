@@ -11,21 +11,30 @@ vector<int> majority(vector<int> a)
     vector<int> res;
     //sort the array
     sort(a.begin(),a.end());
-    for(int i=0;i<size;i++)
+    int freq=0, ans =a[0];
+    for(int i=1;i<size;i++)
     {
-        int freq=0;
-        for(int j=0;j<size;j++)
-        {
-            if(a[i]==a[j])
-            {
-                freq++;
-            }
+        // int freq=0;
+        // for(int j=0;j<size;j++)
+        // {
+        //     if(a[i]==a[j])
+        //     {
+        //         freq++;
+        //     }
            
             
+        // }
+        if(a[i]==a[i-1])
+        {
+            freq++;
+        }
+        else{
+            freq=1;
+            ans=a[i];
         }
         if(freq>(size/2))
         {
-            res.push_back(a[i]);
+            res.push_back(ans);
             return res;
         }
         
