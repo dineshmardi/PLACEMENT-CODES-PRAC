@@ -26,11 +26,40 @@ vector<int> pairsum(vector<int> a,int size,int target)
 
 }
 
+vector<int> opt_pairsum(vector<int> a,int size,int target)
+{
+    int sum=0;
+    vector<int> p;
+    int left=0;
+    int right=size-1;
+    
+    while(left<=right)
+    {
+        sum=a[left]+a[right];
+        if(sum==target)
+        {
+            p.push_back(left);
+            p.push_back(right);
+            return p;
+        }
+        else if(sum<target)
+        {
+            left++;
+        }
+        else{
+            right--;
+        }
+
+    }
+    return p;
+    
+}
+
 int main()
 {
     vector<int> a={2,7,11,15};
     int size=a.size();
-   vector<int>ans= pairsum(a,size,22);
+   vector<int>ans= opt_pairsum(a,size,9);
    cout<<ans[0]<<" "<<ans[1]<<endl;
 
 
