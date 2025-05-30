@@ -29,6 +29,29 @@ vector<int> arr(vector<int> a)
 }
 
 
+
+vector<int> o_arr(vector<int> a) {
+    int n = a.size();
+    vector<int> result(n, 1);
+
+    int leftProduct = 1;
+    for (int i = 0; i < n; i++) {
+        result[i] = leftProduct;
+        leftProduct *= a[i];
+    }
+
+    int rightProduct = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        result[i] *= rightProduct;
+        rightProduct *= a[i];
+    }
+
+    return result;
+}
+
+
+
+
 int main()
 {
     double a=3.6;
@@ -37,7 +60,12 @@ int main()
 
     cout<<"vector implementation array multiply except self:"<<endl;
     vector<int> name={1,2,3,4};
-    vector<int> res=arr(name);
+    vector<int> res=o_arr(name);
+    for(int i:res)
+    {
+        cout<<i<<endl;
+    }
+    cout<<"new one:"<<endl;
     for(int i:res)
     {
         cout<<i<<endl;
