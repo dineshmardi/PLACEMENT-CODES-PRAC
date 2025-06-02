@@ -62,6 +62,29 @@ void vbin_search(vector<int> &a, int target)
 }
 
 
+//recursive apperoach
+
+int bs(int a[],int target,int start,int end)
+{
+    if(start<=end)
+    {
+        int mid=start+(end-start)/2;
+        if(a[mid]<target)
+        {
+            return bs(a,target,mid+1,end);
+        }
+        else if(a[mid]>target)
+        {
+            return bs(a,target,start,end-1);
+        }
+        else{
+            return mid;
+        }
+    }
+    cout<<"not found"<<endl;
+    return -1;
+}
+
 
 
 int main()
@@ -72,6 +95,12 @@ int main()
     vbin_search(name,2);
 
     bin_search(binn,sizeof(binn)/sizeof(int),4);
+    int target=2;
+    
+
+    int a=bs(binn,target,0,sizeof(binn)/sizeof(int));
+
+    cout<<"found at index="<<a<<endl;
 // cout<<"another vector="<<endl;
 //     for(int num:name)
 //     {
